@@ -27,7 +27,7 @@ class MenuState extends FlxState
     FlxG.mouse.show();
     #end
 
-    FlxG.log.redirectTraces = false;
+    //FlxG.log.redirectTraces = false;
     super.create();
 
     var s = new FlxSprite(10, 10);
@@ -48,6 +48,55 @@ class MenuState extends FlxState
               s = new FlxSprite(100, 100);
               s.makeGraphic(50, 50, 0xff00ff00);
               add(s);
+            }
+        });
+
+    var x = new FlxSprite(300, 100);
+    var y = new FlxSprite(300, 100);
+    x.makeGraphic(50, 50, 0xffff0000);
+    y.makeGraphic(40, 40, 0xff00ff00);
+
+    add(x);
+    add(y);
+
+    FlxTween.circularMotion(x, 200, 100, 100, 0, true,
+        4, true,
+        {ease : FlxEase.quadIn,
+          type : FlxTween.ONESHOT,
+          complete : function(t)
+            {
+            }
+        });
+
+    var a = new FlxSprite(50, 200);
+    var b = new FlxSprite(50, 200);
+    a.makeGraphic(40, 40, 0xffff0000);
+    b.makeGraphic(30, 30, 0xff00ff00);
+    add(a);
+    add(b);
+
+    FlxTween.cubicMotion(a, 50, 200, 500, 100, 400, 200, 50, 200,
+        4,
+        {ease : FlxEase.quadIn,
+          type : FlxTween.ONESHOT,
+          complete : function(t)
+            {
+            }
+        });
+
+    var q = new FlxSprite(300, 200);
+    var w = new FlxSprite(300, 200);
+    q.makeGraphic(40, 40, 0xffff0000);
+    w.makeGraphic(30, 30, 0xff00ff00);
+    add(q);
+    add(w);
+
+    FlxTween.quadMotion(q, 300, 200, 300, 500, 300, 200,
+        4, true,
+        {ease : FlxEase.quadIn,
+          type : FlxTween.ONESHOT,
+          complete : function(t)
+            {
             }
         });
   }
