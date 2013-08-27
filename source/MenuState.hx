@@ -51,6 +51,26 @@ class MenuState extends FlxState
             }
         });
 
+    var startTime:Int = flash.Lib.getTimer();
+    var txt = new FlxText(10,400,400,"This should change in 2 Seconds",8);
+    txt.color = 0xFFFFFF00;
+    add(txt);
+    FlxTween.linearMotion(txt,
+      10, 400, 10, 400, 2, true, {complete : function(t)
+                                    {
+                                      if( flash.Lib.getTimer() - startTime < 2000)
+                                      {
+                                        txt.text = "Tween lasted less than 2 seconds, failure!";
+                                        txt.color = 0xFFFF0000;
+                                      }
+                                      else
+                                      {
+                                        txt.text = "It has been at least 2 seconds, success!";
+                                        txt.color = 0xFF00FF00;
+                                      }
+                                    }
+                                  } );
+
     var x = new FlxSprite(300, 100);
     var y = new FlxSprite(300, 100);
     x.makeGraphic(50, 50, 0xffff0000);
